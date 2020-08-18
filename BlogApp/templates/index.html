@@ -1,0 +1,113 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+div{
+text-align: center;	
+}
+.img-responsive {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
+
+{% endblock %}
+{% block title %}主页{% endblock %}
+{% block background %} {% endblock %}
+{% block content %}
+		
+			{% if message %}
+				<div class="alert alert-warning">{{ message }}</div>
+			{% endif %}
+		<div class='row'>
+			<div class="col">
+				  							    
+			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >	
+		  <ol class="carousel-indicators">
+			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		  </ol>
+	
+		  <div class="carousel-inner">
+			<div class="carousel-item active">
+			  <img src='/static/img/font/1.jpg' class = "img-responsive" alt="...">
+			</div>
+			<div class="carousel-item">
+			  <img src='/static/img/font/2.png' class = "img-responsive" alt="...">
+			</div>
+			<div class="carousel-item">
+			  <img src='/static/img/font/3.png' class = "img-responsive center-block" alt="...">
+			</div>
+		  </div>
+		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		  </a>
+		  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		  </a>
+		</div>
+				</div>
+		</div>
+		<div class='row'>
+            <div class='col'>
+                {% for i in article %}
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                        <hr class="my-4">                       
+                                <h1 class="display-4"><a href="" class="card-link">{{ i.title }}</a></h1>
+								<h1 class="display-6">作者：{{ i.author }}<span class="badge badge-pill badge-success">认证</span></h1>
+                            
+                            
+                        
+                        <p class="lead">{{ i.category }}</p>
+                        <p class="text-justify">{{ i.content }}</p>
+						<div>
+						<img src={{i.photo}} alt="..." class="img-responsive">
+						</div>
+						<div class="row">
+                            <div class='col'>
+                                <p>{{ i.pub_date }}</p>                            
+                                <p><a href="#" class="card-link"></a></p>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+						<p>{{i.like_user}}总{{i.number}}人觉得很赞</p>
+						<form action="" method="post">
+							{% csrf_token %}
+						<input name="id" value={{i.id}} type="hidden">
+						<div class="button">						
+						<input type="submit" value = '点赞'>
+						</div>
+						</form>
+						<form method ='post'>{# 评论#}
+							{% csrf_token %}
+						<div class = 'row'>
+						<div class = 'col'>
+						<input name="id" value={{i.id}} type="hidden">
+						<div class="input-group">
+						<div class="input-group-prepend">
+						<span class="input-group-text">评论</span>
+						</div>
+						<textarea class="form-control" aria-label="50字以内" name = 'words'></textarea>
+						</div>
+						</div>
+						<div class = 'col'><input type="submit" value = '发布'> </div>
+						</form>
+						</div>
+						{% for r in comment %}
+						{% if i.id == r.at_article %}
+						<div class = 'row'>
+						<p>{{r.pub_time}} <font color="045dfe">{{r.user}}</font>: {{r.words}}</p>
+						</div>
+						{% endif %}
+						{% endfor %}
+                    </div>
+                {% endfor %}                     
+				<span class="border border-warning"><只要注册一个账号就可发布文章，请文明上网， 如果有问题可以QQ联系我>
+				</span>
+			</div>
+        </div>
+		</div>
+
+{% endblock %}

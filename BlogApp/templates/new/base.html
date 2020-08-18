@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Clockの博客</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/static/img/me/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="referrer" content="never">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700|Inconsolata:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/web/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/web/css/animate.css">
+    <link rel="stylesheet" href="/static/web/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="/static/web/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/web/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/web/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/static/web/css/style.css">
+
+
+</head>
+<body>
+
+
+<div class="wrap">
+
+    <header role="banner">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-9 social">
+                        <a href="#"><span class="fa fa-twitter"></span></a>
+                        <a href="#"><span class="fa fa-facebook"></span></a>
+                        <a href="#"><span class="fa fa-instagram"></span></a>
+                        <a href="#"><span class="fa fa-youtube-play"></span></a>
+                        {% if request.session.is_login %}
+                        <a href="" tabindex="-1" aria-disabled="true">你好,<span
+                                class="text-success">{{ request.session.user_name }}</span>！欢迎回来！</a>
+                        <a href="/logout/" tabindex="-1" aria-disabled="true"><span
+                                class="text-danger">登出</span></a>
+                        {% else %}
+                        <a href="/login/" tabindex="-1" aria-disabled="true">登录</a>
+                        {% endif %}
+                    </div>
+                    <div class="col-3 search-top">
+                        <!-- <a href="#"><span class="fa fa-search"></span></a> -->
+                        <form action="#" class="search-top-form">
+                            <span class="icon fa fa-search"></span>
+                            <input type="text" id="s" placeholder="没什么用的搜索框">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container logo-wrap">
+            <div class="row pt-5">
+                <div class="col-12 text-center">
+                    
+                    <a href="/index/">
+                            <img src="https://q.qlogo.cn/g?b=qq&nk=3342391860&s=100" alt="Image Placeholder" class="smallhead"></a>
+					<h1 class="site-logo">                        
+                            Clocker的博客</a>
+                    </h1>
+                </div>
+            </div>
+        
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class='container'>
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index/">主页</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/">秘密通道</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">宝藏</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="/zhuifan/">追番</a>
+                                <a class="dropdown-item" href="">游戏</a>
+                                <a class="dropdown-item" href="">热心网址</a>
+                                <a class="dropdown-item" href="/register/">加入我的博客</a>
+                                <a class="dropdown-item" href=/add/>记录下心情或灵感</a>
+                            </div>
+
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="dropdown05" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">分类</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown05">
+                                <a class="dropdown-item" href="">无</a>
+                                <a class="dropdown-item" href=""></a>
+                                <a class="dropdown-item" href=""></a>
+                                <a class="dropdown-item" href=""></a>
+                                <a class="dropdown-item" href=""></a>
+                            </div>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">关于我</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">私信</a>
+                        </li>
+                    </ul>
+
+    
+        
+    
+
+  </div>
+    </div>
+</nav>
+</div>
+    </header>
+    <!-- END header -->
+    {% block content %}
+    {% endblock %}
+    <!-- END section -->
+<div class="center">
+	<div class='donghua'>
+	<p>正在为你打碟...</p></div>
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27219537&auto=1&height=66">正在为你打碟...</iframe>
+    </div>
+<footer class="site-footer">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-4">
+                    <h3>About Us</h3>
+                    <p class="mb-4">
+                        <img src="https://q.qlogo.cn/g?b=qq&nk=3342391860&s=100" alt="ZZblog" class="smallhead">
+                    </p>
+
+                    <p>一个小网站<a href="#">更多</a></p>
+                </div>
+                <div class="col-md-6 ml-auto">
+                    <div class="row">
+
+                        <div class="col-md-1"></div>
+
+                        <div class="col-md-4">
+
+                            <div class="mb-5">
+                                <h3>Quick Links</h3>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">关于我</a></li>
+                                    <li><a href="/zhuifan/">我的追番</a></li>
+                                    <li><a href="#">没有</a></li>
+                                    <li><a href="#">没有</a></li>
+                                    <li><a href="#">没有</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-5">
+                                <h3>Social</h3>
+                                <ul class="list-unstyled footer-social">
+                                    <li><a href="#"><span class="fa fa-twitter"></span> Twitter</a></li>
+                                    <li><a href="#"><span class="fa fa-facebook"></span> Facebook</a></li>
+                                    <li><a href="#"><span class="fa fa-instagram"></span> Instagram</a></li>
+                                    <li><a href="#"><span class="fa fa-vimeo"></span> Vimeo</a></li>
+                                    <li><a href="#"><span class="fa fa-youtube-play"></span> Youtube</a></li>
+                                    <li><a href="#"><span class="fa fa-snapchat"></span> Snapshot</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="small">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script data-cfasync="false"
+                                src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                        <script>document.write(new Date().getFullYear());</script>
+                        Clocker的博客 | This theme is made with <i class="fa fa-heart text-danger" aria-hidden="true"></i>
+                        by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+					<script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279193486'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279193486%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END footer -->
+
+
+</div>
+
+<!-- loader -->
+<div id="loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#f4b214"/>
+    </svg>
+</div>
+
+</body>
+<script src="/static/web/js/jquery-3.2.1.min.js"></script>
+<script src="/static/web/js/jquery-migrate-3.0.0.js"></script>
+<script src="/static/web/js/popper.min.js"></script>
+<script src="/static/web/js/owl.carousel.min.js"></script>
+<script src="/static/web/js/jquery.waypoints.min.js"></script>
+<script src="/static/web/js/jquery.stellar.min.js"></script>
+<script src="/static/web/js/bootstrap.min.js"></script>
+<script src="/static/web/js/main.js"></script>
+
+</html>

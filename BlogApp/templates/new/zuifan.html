@@ -1,0 +1,19 @@
+{% extends 'new\base.html' %}
+{% block content %}
+<div class='container'>
+	<p>数据来源于B站我的空间</p>
+	<div class='row'>
+	{% for i in js %}
+	<a class="fanjv-box" href="{{i.url}}">
+	<hr>
+	  <div class='photo'><img src="{{i.cover}}" class="img-fluid" alt="..."></div>
+	  <div class="card-content">
+		<h1><font>{{i.title}}</font></h1>
+		<p class="card-text" >{{i.evaluate}}</p>
+	  </div>
+	</a>
+{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

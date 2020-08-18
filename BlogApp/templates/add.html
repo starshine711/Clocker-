@@ -1,0 +1,44 @@
+﻿{% extends 'new\base.html' %}
+{% block title %}添加文章{% endblock %}
+{% block css %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+	<div class='white-box'>
+        {% if  request.session.is_login %}
+            <form action='' method='post' name='iframeForm'  target="iframeForm">
+                {% csrf_token %}
+                {% if message %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="title">标题</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="jianjie">简介</label>
+                    <input type="text" class="form-control" id="title" name="jianjie" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">正文</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="text" rows='10'></textarea>
+                </div>
+				<div class="form-group">
+                    <label for="exampleFormControlTextarea1">封面大图</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="pic_link"></textarea>
+                </div>
+				<div class="form-group">
+                    <label for="exampleFormControlTextarea1">尾图list</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="pic_link_list"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">上传</button>
+            </form>
+
+        {% else %}
+            <h color:#fff>请先登录</h>
+        {% endif %}
+	</div>
+    </div>
+{% endblock %}

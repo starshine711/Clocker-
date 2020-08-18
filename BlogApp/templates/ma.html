@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Z式码{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="shadow-lg p-3 mb-5 bg-white rounded">
+	<form method="post">
+		{% csrf_token %}
+		{% if message %}
+            <div class="alert alert-warning">{{ message }}</div>
+        {% endif %}
+		<div class="form-group">
+            <label for="title">加密后的字符</label>
+            <input type="text" class="form-control" id="title" name="jiami" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary">解码</button>	
+	</form>
+			<label for="title">解密后的字符</label>
+            <div class="alert alert-primary" role="alert">{{jiema_str}}</div>
+
+	</div>
+	<div class="shadow-lg p-3 mb-5 bg-white rounded">
+	<form method="post">
+		{% csrf_token %}
+		<div class="form-group">
+            <label for="title">正常字符</label>
+            <input type="text" class="form-control" id="title" name="normal_str" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary">加密</button>	
+	</form>
+			<label for="title">加密后的字符</label>
+            <div class="alert alert-primary" role="alert">{{jiami_ac}}</div>
+	</div>
+</div>
+{% endblock %}

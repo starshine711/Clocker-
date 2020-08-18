@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+div{
+text-align: center;	
+}
+.img-responsive {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
+p {word-wrap:break-word;}
+{% endblock %}
+{% block title %}文章详细{% endblock %}
+{% block background %} {% endblock %}
+{% block content %}
+	{% if message %}
+		<div class="alert alert-warning">{{ message }}</div>
+	{% endif %}
+	<div class = 'card'>
+	<hr class="my-4">                       
+        <h1 class="display-4">{{ i.title }}</h1>
+		<h1 class="display-6">作者：{{ i.author }}<span class="badge badge-pill badge-success">认证</span></h1>
+           <p class="lead">{{ i.category }}</p>
+                        <pre class="text-justify">{{ i.content }}</pre>
+						<div>
+						<img src={{i.photo}} alt="..." class="img-responsive">
+						</div>
+						<div class="row">
+                            <div class='col'>
+                                <p>{{ i.pub_date }}</p>                            
+                                <p><a href="#" class="card-link"></a></p>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+						<p>{{i.like_user}}总{{i.number}}人觉得很赞</p>
+						<form action="" method="post">
+							{% csrf_token %}
+						<input name="like" value=Ture type="hidden">
+						<div class="button">						
+						<input type="submit" value = '点赞'>
+						</div>
+						</form>
+						<form method ='post'>{# 评论#}
+							{% csrf_token %}
+						<div class = 'row'>
+						<div class = 'col'>						
+						<div class="input-group">
+						<div class="input-group-prepend">
+						<span class="input-group-text">评论</span>
+						</div>
+						<textarea class="form-control" aria-label="50字以内" name = 'words'></textarea>
+						</div>
+						</div>
+						<div class = 'col'><input type="submit" value = '发布'> </div>
+						</form>
+						</div>
+						{% for r in comment %}						
+						<div class = 'row'>						
+						<p>{{r.pub_time}} <font color="045dfe">{{r.user}}</font>: {{r.words}}</p>
+						</div>						
+						{% endfor %}
+					</div>
+           
+{% endblock %}

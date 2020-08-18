@@ -1,0 +1,103 @@
+{% extends 'new\base.html' %}
+{% block content %}
+    <meta charset="UTF-8">
+	{% if message %}
+		<div class="alert alert-warning">{{ message }}</div>
+	{% endif %}
+    <section class="site-section py-lg">
+      <div class="container">
+        <div class = 'white-box'>
+        <div class="row blog-entries element-animate">
+
+          <div class="col-md-12 col-lg-8 main-content">
+            <img src="{{i.photo}}" alt="Image" class="img-fluid mb-5">
+             <div class="post-meta">
+                        <span class="author mr-2"><img src="https://q.qlogo.cn/g?b=qq&nk={{i.author_email}}&s=100" alt="" class="mr-2"> {{i.author}}</span>&bullet;
+                        <span class="mr-2">{{i.pub_date}} </span> &bullet;
+                        <span class="ml-2"><span class="fa fa-comments"></span> {{i.comment_number}}</span>
+                      </div>
+            <h1 class="mb-4">{{i.title}}</h1>
+            <a class="category mb-5" href="#">{{i.category}}</a>
+           
+            <div class="post-content-body">
+              {% block txt %}
+              {% endblock %}
+            <div class="row mb-5">
+              <div class="col-md-12 mb-4">
+                <img src="{{i.photo_list}}" alt="Image placeholder" class="img-fluid">
+              </div>
+            </div>
+            
+            <div class="pt-5">
+              <p>目录:  <a href="#">{{i.category}}</a>, <a href="#"></a> </p>
+            </div>
+
+
+            <div class="pt-5">
+              <h3 class="mb-5">{{i.comment_number}} 评论</h3>
+			  
+              <ul class="comment-list">
+				{% for i in comment %}
+                <li class="comment">
+                  <div class="vcard">
+                    <img src="https://q.qlogo.cn/g?b=qq&nk={{i.email}}&s=100" alt="user">
+                  </div>
+                  <div class="comment-body">
+                    <h3>{{i.user}}</h3>
+                    <div class="meta">{{i.pub_time}}</div>
+                    <p>{{i.words}}</p>
+
+                  </div>
+                </li>
+				{% endfor %}
+
+                
+
+               
+              </ul>
+              <!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">评论</h3>
+                <form class="p-5 bg-light" method = 'post'>
+					{% csrf_token %}
+                  {% if not request.session.is_login %}
+                  <div class="form-group">
+                    <label for="name">昵称 *</label>
+                    <input type="text" class="form-control" name = 'name'id="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">QQ邮箱 *</label>
+                    <input type="email" class="form-control" name='email' id="email">
+                  </div>
+                  {% endif %}
+
+                  <div class="form-group">
+                    <label for="words">内容</label>
+                    <textarea name="words" id="message" cols="30" rows="10" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="发布评论" class="btn btn-primary">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- END main-content -->
+
+
+            <!-- END sidebar-box -->
+            <!-- END sidebar-box -->
+            </div>
+          </div>
+          <!-- END sidebar -->
+
+        </div>
+      </div>
+	  </div>
+    </section>
+{% endblock %}
+
