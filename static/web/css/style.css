@@ -1,6 +1,6 @@
 body {
-        background-image: url('https://ftp.bmp.ovh/imgs/2020/08/2313e2fc1dac9dd3.jpeg');
-        background-repeat:repeat;
+        background-image: url('https://s1.ax1x.com/2020/08/19/d3ATTx.jpg');
+        background-repeat:no-repeat;
         background-attachment: fixed;
         background-size: 100%;
   font-family: "Inconsolata", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -21,15 +21,14 @@ border-radius:25px;}
 	width:150px;
 	height:50px;
 	background:red;
+	 border-radius:25px;
 	position:relative;
 	animation:myfirst 5s linear 2s infinite alternate;
 }
 @keyframes myfirst
 {
-	0%   {background:red; left:0px; top:0px;}
-	25%  {background:yellow; left:400px; top:0px;}
-	50%  {background:blue; left:400px; top:200px;}
-	75%  {background:green; left:0px; top:200px;}
+	0%   {background:red; left:0px; top:0px;}	
+	50%  {background:blue; left:200px; top:0px;}
 	100% {background:red; left:0px; top:0px;}
 }
   
