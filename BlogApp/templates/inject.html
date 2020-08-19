@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>调整</title>
+</head>
+<body>
+<div class = container>
+    {% if message %}
+    <div class="alert alert-warning">{{ message }}</div>
+    {% endif %}
+    {% if request.session.is_login %}
+    <form method ='post'>
+        {% csrf_token %}
+        <input name="action" value='reloading_article' type="hidden">
+        <input type="submit" value = '更新文章'>
+    </form>
+    <form method ='post'>
+        {% csrf_token %}
+        <input name="action" value='reloading_fanjv' type="hidden">
+        <input type="submit" value = '更新番剧'>
+    </form>
+    {% else %}
+    <p>请先登录！</p>>
+    {% endif %}
+</div>
+</body>
+</html>
