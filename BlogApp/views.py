@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .models import User,RegisterForm,Article,Comment
 from . import c3
+import requests
 basic = c3.basic
 import json
 # Create your views here.
@@ -174,6 +175,7 @@ def getkey(dic,value):
     for k in dic.keys():
         if dic[k] == value:
             return k            
+
 def ma(request):
     if request.method == "POST":
         jiami_ac = request.POST.get('jiami', None)
@@ -207,8 +209,47 @@ def ma(request):
                 jiami_str_ac += str(ord(i))+' '
             return render(request, 'ma.html', {"jiami_ac": jiami_str_ac})
     return render(request,'ma.html')
+
 def zuifan(request):
     f=open('static\\web\\fanjv.json',encoding='utf-8')
     js = json.load(f)
     f.close()
     return render(request,'new\zuifan.html',{"js":js['data']['list']})
+
+def get():#得到json并保存
+	response = requests.get('https://api.catbk.cn/list?vmid=438061775&ps=21')
+	response.encoding='utf-8'
+	if response.text:
+		try:
+			f=open('static\\web\\fanjv.json','w',encoding='utf-8')
+			f.write(response.text)
+			f.close()
+			return '更新成功'
+		except ValueError as e:
+			return '写入失败：'+ str(e)
+	else:
+		return '获取数据失败'
+
+def reloadng(request):#调整数据
+    if request.method == "POST" and request.POST.get('action'):
+        message = ''
+        action = request.POST.get('action')
+        if action =='reloading_article':
+            try:
+                for article in Article.objects.all():
+                    f = open(".\\bloghtml\\{}.html".format(str(article.id)), 'w', encoding='utf-8')
+                    txt = u"{% extends 'new\showArticle.html' %}\n{% block txt %}\n"
+                    for i in article.content.split('\r\n'):
+                        txt += u'<p>{}</p>'.format(i)
+                    txt += u'\n{% endblock %}'
+                    f.write(txt)
+                    f.close()
+                message = '更新成功！！'
+            except:
+                message = '出错了！！！'
+            return render(request, 'inject.html',{'message':message})
+        elif action=='reloading_fanjv':
+            message= get()
+            return render(request, 'inject.html',{'message':message})
+    else:
+        return render(request, 'inject.html')

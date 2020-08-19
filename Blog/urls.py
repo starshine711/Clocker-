@@ -27,7 +27,8 @@ urlpatterns = [
     path('add/',views.addArticle),
     path('ma',views.ma),
     path('article/',views.showArticle),
-    path('zhuifan/',views.zuifan)
+    path('zhuifan/',views.zuifan),
+    path('inject/', views.reloadng),
 
-]    
+]
 

@@ -1,0 +1,126 @@
+{% extends 'new\base.html' %}
+{% block  content %}
+<section class="site-section pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="owl-carousel owl-theme home-slider">
+                    {% for i in latest_article %}
+                    <div class ='container' >
+						<div href="/article/?id={{i.id}}" class="a-block d-flex align-items-center height-lg"
+                           style="background-image: url({{i.photo}}); ">
+                            <div class="text half-to-full">
+                                <span class="category mb-5">{{i.category}}</span>
+                                <div class="post-meta">
+
+                                    <span class="author mr-2"><img src="https://q.qlogo.cn/g?b=qq&nk={{i.author_email}}&s=100"
+                                                                   alt=""> {{i.author}}</span>&bullet;
+                                    <span class="mr-2">{{i.pub_date}}</span> &bullet;
+                                    <span class="ml-2"><span class="fa fa-comments"></span> {{i.comment_number}}<svg
+                                            width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+							<path fill-rule="evenodd"
+                                  d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>{{i.look_number}}
+							</span>
+
+                                </div>
+                                <a  href="/article/?id={{i.id}}"><font color = #fff>{{i.title}}</font></a>
+                                <p>{{i.category}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</section>
+<!-- END section -->
+
+<section class="site-section py-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="mb-4"><font color=#fff>最新文章</font></h2>
+
+            </div>
+        </div>
+        <div class="row blog-entries">
+            <div class="col-md-12 col-lg-8 main-content">
+                <div class="row">
+                    {% for i in article %}
+                    <div class="col-md-6">
+                        <a href="/article/?id={{i.id}}" class="blog-entry element-animate" data-animate-effect="fadeIn">
+                            <img src={{i.photo}} alt="Image placeholder">
+                            <div class="blog-content-body">
+                                <div class="post-meta">
+                                    <span class="author mr-2"><img src=https://q.qlogo.cn/g?b=qq&nk={{i.author_email}}&s=100 alt="">{{i.author}}</span>&bullet;
+                                    <span class="mr-2">{{i.pub_date}}</span> &bullet;
+                                    <span class="ml-2"><span class="fa fa-comments"></span>{{i.comment_number}}
+						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+							<path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>{{i.look_number}}</span>
+                                </div>
+                                <h2>{{i.title}}</h2>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <div class="col-md-12 col-lg-4 sidebar">
+                <div class="sidebar-box search-form-wrap">
+                    <form action="#" class="search-form">
+                        <div class="form-group">
+                            <span class="icon fa fa-search"></span>
+                            <input type="text" class="form-control" id="s" placeholder="没什么用的搜索框">
+                        </div>
+                    </form>
+                </div>
+                <!-- END sidebar-box -->
+                <div class="sidebar-box">
+                    <div class="bio text-center">
+                        <img src="https://q.qlogo.cn/g?b=qq&nk=3342391860&s=100" alt="Image Placeholder" class="img-fluid">
+                        <div class="bio-body">
+                            <h2>Clocker</h2>
+                            <p>一个热爱编程的小白</p>
+                            <p><a href="#" class="btn btn-primary btn-sm rounded">读我的博文</a></p>
+                            <p class="social">
+                                <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
+                                <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
+                                <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+                                <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <nav aria-label="Page navigation" class="text-center">
+                    <ul class="pagination">
+                        <li class="page-item  active"><a class="page-link" href="#">&lt;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}
