@@ -1,2 +1,3 @@
 需Import django,requests
 网站版本3.0
+需自建一个bloghtml文件夹
